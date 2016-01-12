@@ -1,7 +1,7 @@
 {
-  "name": "date-ranges",
+  "name": "weeks",
   "version": "0.1.0",
-  "description": "Days of weeks",
+  "description": "Expressive API for getting weeks ",
   "main": "./weeks",
   "scripts": {
     "test": "mocha"
