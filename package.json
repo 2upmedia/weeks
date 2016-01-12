@@ -13,9 +13,10 @@
     "moment": "^2.11.1"
   },
   "devDependencies": {
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "timekeeper": "0.0.5"
   },
-  "engines" : {
-    "node" : "~2.3.0"
+  "engines": {
+    "node": "~2.3.0"
   }
 }

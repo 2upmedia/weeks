@@ -35,7 +35,7 @@ describe('Weeks', function() {
 
     rangesDataSet.forEach(function(test) {
       it(test.name, function() {
-        var actual = weeks.get.apply(weeks, test.args).values();
+        var actual = weeks.starting(test.args[1]).get(test.args[0]).values();
 
         actual.should.deep.equal(test.expect);
       });
@@ -44,8 +44,10 @@ describe('Weeks', function() {
     it('should give me weeks based on today', function() {
       var actual = weeks.get(2).values();
 
-      var firstDate = moment(new Date());
-      var secondDate = moment(new Date());
+      var date = new Date();
+
+      var firstDate = moment(date);
+      var secondDate = moment(date);
 
       var expect = [firstDate.toDate(), secondDate.day(secondDate.day() + 7).toDate()];
 
@@ -67,9 +69,8 @@ describe('Weeks', function() {
         '14 - 19 DE DICIEMBRE'
       ];
 
-      function format(momentDay) {
+      function formattedWeeks(momentDay) {
         var mondayOfWeek = momentDay.clone().day(1);
-        // get saturday Date
         var saturdayOfWeek = momentDay.clone().day(6);
 
         var formatted = '';
@@ -95,11 +96,16 @@ describe('Weeks', function() {
         }
       }
 
-      var actual = weeks.locale('es').get(5, new Date('11/15/2015')).map(format);
+      var actual = weeks.withLocale('es').starting(new Date('11/15/2015')).get(5).mapped(formattedWeeks);
 
       actual.should.deep.equal(expect);
     });
-  })
+  });
+
+  describe('#mapPartial', function() {
+    it('should map a partial');
+    // weeks.formattedWeeks = weeks.mapPartial(formattedWeeks;
+  });
 
   describe('#weeks', function() {
     it('should expect parameters to be set', function() {
@@ -108,7 +114,7 @@ describe('Weeks', function() {
     });
 
     it('should expect startDate to be a Date object', function() {
-      Weeks().get.bind(null, 2, "not a Date object").should.throw(Error);
+      Weeks().starting.bind(null, "not a Date object").should.throw(Error);
     });
   });
 });

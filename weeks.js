@@ -10,7 +10,7 @@ var _weeksAmount;
 
 function Weeks() {
   _buffer = [];
-  _startDate = undefined;
+  _startDate = new Date();
   _weeksAdjustment = undefined;
   _weeksAmount = undefined;
 }
@@ -25,14 +25,14 @@ function _ofPreposition(locale) {
     return map[locale]
   }
 
-  if (this.locale() !== 'en') {
-    return map[this.locale()];
+  if (this.withLocale() !== 'en') {
+    return map[this.withLocale()];
   } else {
     return map.en;
   }
 }
 
-function locale(locale) {
+function withLocale(locale) {
   if (locale) {
     this._locale = locale;
 
@@ -42,38 +42,43 @@ function locale(locale) {
   }
 }
 
-function get(weeksAmount, startDate, iterationCallable) {
+function starting(date) {
+  if (!date) {
+    date = new Date();
+  }
+
+  if (date instanceof Date === false) {
+    throw new Error('startDate must be a Date object');
+  }
+
+  _startDate = date;
+
+  return this;
+}
+
+function get(weeksAmount) {
   // give a start date
   if (!weeksAmount) {
     // throw error
     throw new Error('weeksAmount needs to be set.');
   }
 
-  if (!startDate) {
-    startDate = new Date();
-  }
-
-  if (startDate instanceof Date === false) {
-    throw new Error('startDate must be a Date object');
-  }
-
-  _startDate = startDate;
   _weeksAmount = weeksAmount;
 
   return this;
 }
 
-function map(iterationCallable) {
+function mapped(iterationCallable) {
   var self = this;
 
   if (typeof iterationCallable === 'function') {
     var limitedMethods = {
-      locale,
+      withLocale,
       ofPreposition: _ofPreposition,
       _locale: self._locale
     };
 
-    var _locale = this.locale();
+    var _locale = this.withLocale();
     moment.locale(_locale);
 
     for (let iteration = 0, weeksAdjustment = 0; iteration < _weeksAmount; iteration++) {
@@ -92,6 +97,14 @@ function map(iterationCallable) {
     }
 
     return _buffer;
+  }
+}
+
+function mapPartial(callable) {
+  var self = this;
+
+  return function() {
+    return mapped.call(self, callable);
   }
 }
 
@@ -114,9 +127,11 @@ function factory() {
 }
 
 Weeks.prototype._locale = 'en';
-Weeks.prototype.locale = locale;
+Weeks.prototype.starting = starting;
+Weeks.prototype.withLocale = withLocale;
 Weeks.prototype.get = get;
-Weeks.prototype.map = map;
+Weeks.prototype.mapped = mapped;
+Weeks.prototype.mapPartial = mapPartial;
 Weeks.prototype.values = values;
 Weeks.prototype.ofPreposition = _ofPreposition;
 
