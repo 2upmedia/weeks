@@ -15,7 +15,7 @@ describe('Weeks', function() {
     var rangesDataSet = [
       {
         name: 'should return right days per week based on start date',
-        args: [2, new Date('11/17/2015')],
+        args: [2, new Date('2015-11-17T05:00:00.000Z')],
         expect: [
           new Date('2015-11-17T05:00:00.000Z'),
           new Date('2015-11-24T05:00:00.000Z')
@@ -23,7 +23,7 @@ describe('Weeks', function() {
       },
       {
         name: 'should return right days per week based on start date over multiple months',
-        args: [5, new Date('11/15/2015')],
+        args: [5, new Date('2015-11-15T05:00:00.000Z')],
         expect: [
           new Date('2015-11-15T05:00:00.000Z'),
           new Date('2015-11-22T05:00:00.000Z'),
