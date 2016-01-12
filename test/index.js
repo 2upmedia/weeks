@@ -113,8 +113,10 @@ describe('Weeks', function() {
 
       var actual = weeks.get(2).mondays();
 
+      var time = new Date();
+      tk.freeze(time);
       var date = new Date();
-      tk.freeze(date);
+
       var firstDate = moment(date).day(1);
       var secondDate = moment(date).day(1 + 7);
 
