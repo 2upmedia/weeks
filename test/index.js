@@ -1,6 +1,8 @@
 var should = require('chai').should();
 var Weeks = require('../weeks');
 var moment = require('moment');
+var tk = require('timekeeper');
+
 
 describe('Weeks', function() {
   describe('#values', function() {
@@ -44,6 +46,8 @@ describe('Weeks', function() {
       var actual = weeks.get(2).values();
 
       var date = new Date();
+
+      tk.freeze(date);
 
       var firstDate = moment(date);
       var secondDate = moment(date);
