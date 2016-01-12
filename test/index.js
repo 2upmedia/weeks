@@ -50,7 +50,7 @@ describe('Weeks', function() {
       tk.freeze(date);
 
       var firstDate = moment(date);
-      var secondDate = moment(date);
+      var secondDate = moment(date).clone();
 
       var expect = [firstDate.toDate(), secondDate.day(secondDate.day() + 7).toDate()];
 
