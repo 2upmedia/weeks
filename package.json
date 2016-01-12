@@ -1,6 +1,6 @@
 {
   "name": "weeks",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Expressive API for getting weeks ",
   "main": "./weeks",
   "scripts": {
