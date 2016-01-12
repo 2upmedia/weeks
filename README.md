@@ -21,7 +21,7 @@ weeks = Weeks();
 weeks.get(2).values(); 
 
 // gets every week in 2016 with the day based off of the start date
-weeks.get(52, new Date('1/1/2016')).values(); 
+weeks.starting(new Date('1/1/2016')).get(52).values(); 
 
 function mondays(momentDay) {
     return momentDay.day(1).toDate();
