@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/2upmedia/weeks.svg)](https://travis-ci.org/2upmedia/weeks)
 
-# Weeks
+# Weeks 
 
 Expressive API for getting weeks. Uses the wonderful moments library.
 
