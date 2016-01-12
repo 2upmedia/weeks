@@ -120,4 +120,10 @@ describe('Weeks', function() {
       Weeks().starting.bind(null, "not a Date object").should.throw(Error);
     });
   });
+
+  describe('#new', function() {
+    it('should be able to be instantiated with new', function () {
+      (new Weeks()).should.be.an.instanceof(Weeks);
+    });
+  });
 });
