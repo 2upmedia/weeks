@@ -1,0 +1,21 @@
+{
+  "name": "date-ranges",
+  "version": "0.1.0",
+  "description": "Days of weeks",
+  "main": "./weeks",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Jorge Colon",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.4.1",
+    "moment": "^2.11.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  },
+  "engines" : {
+    "node" : "~2.3.0"
+  }
+}
