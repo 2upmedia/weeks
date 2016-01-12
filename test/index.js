@@ -106,8 +106,22 @@ describe('Weeks', function() {
   });
 
   describe('#mapPartial', function() {
-    it('should map a partial');
-    // weeks.formattedWeeks = weeks.mapPartial(formattedWeeks;
+    it('should map a partial', function () {
+      var weeks = Weeks();
+
+      weeks.mondays = weeks.mapPartial((momentDay) => momentDay.day(1).toDate());
+
+      var actual = weeks.get(2).mondays();
+
+      var date = new Date();
+      tk.freeze(date);
+      var firstDate = moment(date).day(1);
+      var secondDate = moment(date).day(1 + 7);
+
+      var expect = [firstDate.toDate(), secondDate.toDate()];
+
+      actual.should.deep.equal(expect);
+    });
   });
 
   describe('#weeks', function() {
