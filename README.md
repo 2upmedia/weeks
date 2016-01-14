@@ -2,12 +2,12 @@
 
 # Weeks 
 
-Expressive API for getting weeks. Uses the wonderful moments library.
+Expressive API for working with weeks. Uses the wonderful moments library.
 
 ## Features
-- Get weeks based on a day and amount
-- Mapping callables to each week to transform values
-- Supports basic i18n
+- Get weeks based on a day and amount. Returns Date objects based on the day of the start date.
+- Mapping callables to each week to transform values. Example, returning Date ranges in as a string (Feb 2 - 5) 
+- Supports basic internationalization
 - Mapped partial functions
 
 ## Usages
